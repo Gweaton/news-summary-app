@@ -57,7 +57,7 @@ describe('ArticleService', () => {
       expect(firstArticle.url).toEqual('www.articleone.com');
     });
 
-    const req = httpMock.expectOne(service.todayHeadlines);
+    const req = httpMock.expectOne(service.articlesToday);
     expect(req.request.method).toBe('GET');
 
     req.flush(mockResponse);
