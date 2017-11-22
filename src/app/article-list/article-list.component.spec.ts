@@ -1,43 +1,43 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeadlineComponent } from './headline.component';
-import { HeadlineService } from './headline.service';
+import { ArticleListComponent } from './article-list.component';
+import { ArticleService } from './article.service';
 import { Article } from '../../lib/models/article';
 import { Subject } from 'rxjs/Subject';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 
-describe('HeadlineComponent', () => {
-  let component: HeadlineComponent;
-  let fixture: ComponentFixture<HeadlineComponent>;
+describe('ArticleListComponent', () => {
+  let component: ArticleListComponent;
+  let fixture: ComponentFixture<ArticleListComponent>;
 
   let fakeArticleSubject: Subject<Article[]>;
 
-  let headlineServiceSpy: HeadlineService;
+  let articleServiceSpy: ArticleService;
 
   beforeEach(async(() => {
-  headlineServiceSpy = jasmine.createSpyObj('Headline Service Spy', ['fetch']);
+  articleServiceSpy = jasmine.createSpyObj('Article Service Spy', ['fetch']);
   fakeArticleSubject = new ReplaySubject<Article[]>();
 
-  headlineServiceSpy.articles$ = fakeArticleSubject.asObservable();
+  articleServiceSpy.articles$ = fakeArticleSubject.asObservable();
 
     TestBed.configureTestingModule({
-      declarations: [ HeadlineComponent ],
+      declarations: [ ArticleListComponent ],
       providers: [
-        { provide: HeadlineService, useValue: headlineServiceSpy }
+        { provide: ArticleService, useValue: articleServiceSpy }
         ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HeadlineComponent);
+    fixture = TestBed.createComponent(ArticleListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should call the headlineService to fetch article data', () => {
+  it('should call the ArticleService to fetch article data', () => {
     component.ngOnInit();
-    expect(headlineServiceSpy.fetch).toHaveBeenCalled();
+    expect(articleServiceSpy.fetch).toHaveBeenCalled();
   });
 
   it('should display article headlines', () => {

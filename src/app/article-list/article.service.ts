@@ -7,7 +7,7 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Article, deserialiseArticles, RawArticle } from '../../lib/models/article';
 
 @Injectable()
-export class HeadlineService {
+export class ArticleService {
   private dateToday = new Date();
 
   private dateString = `${this.dateToday.getFullYear()}-${this.dateToday.getMonth() + 1}-${this.dateToday.getDate()}`;

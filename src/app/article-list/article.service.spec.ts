@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-import { HeadlineService } from './headline.service';
+import { ArticleService } from './article.service';
 import { Article, RawArticle } from '../../lib/models/article';
 
-describe('HeadlineService', () => {
-  let service: HeadlineService;
+describe('ArticleService', () => {
+  let service: ArticleService;
 
   let httpMock: HttpTestingController;
 
@@ -36,9 +36,9 @@ describe('HeadlineService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ HttpClientTestingModule ],
-      providers: [ HeadlineService ]
+      providers: [ ArticleService ]
     });
-    service = TestBed.get(HeadlineService);
+    service = TestBed.get(ArticleService);
     httpMock = TestBed.get(HttpTestingController);
   });
 

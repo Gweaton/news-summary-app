@@ -5,8 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HeadlineComponent } from './headline/headline.component';
-import { HeadlineService } from './headline/headline.service';
+import { ArticleListComponent } from './article-list/article-list.component';
+import { ArticleService } from './article-list/article.service';
 import { MainComponent } from './main/main.component';
 
 
@@ -14,7 +14,7 @@ import { MainComponent } from './main/main.component';
   declarations: [
     AppComponent,
     MainComponent,
-    HeadlineComponent
+    ArticleListComponent
   ],
   imports: [
     AppRoutingModule,
@@ -22,7 +22,7 @@ import { MainComponent } from './main/main.component';
     HttpClientModule
   ],
   providers: [
-    HeadlineService,
+    ArticleService,
   ],
   bootstrap: [ AppComponent ]
 })
