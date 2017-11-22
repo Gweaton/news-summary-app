@@ -9,6 +9,10 @@ export class MainPage {
     return element(by.css('app-root h1')).getText();
   }
 
+  getArticleList() {
+    return element(by.css('.article-list'));
+  }
+
   getHeadlines() {
     return element(by.css('.headline'));
   }

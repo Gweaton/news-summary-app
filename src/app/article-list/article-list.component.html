@@ -1,5 +1,5 @@
 <ul>
-  <li class="headline" *ngFor="let article of articles$ | async">
-    {{ article.headline }}
+  <li class="article-list" *ngFor="let article of articles$ | async">
+    <h3 class="headline">{{ article.headline }}</h3>
   </li>
 </ul>
