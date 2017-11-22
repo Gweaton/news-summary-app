@@ -8,6 +8,6 @@ describe('Main homepage', () => {
   });
 
   it('should display each article\'s headline', () => {
-    expect(homepage.getHeadlines()).not.toBeNull();
+    expect(homepage.getHeadlines().isPresent()).toBe(true, 'Headlines should be displayed');
   });
 });
