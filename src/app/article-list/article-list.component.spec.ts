@@ -15,18 +15,18 @@ describe('ArticleListComponent', () => {
   let articleServiceSpy: ArticleService;
 
   beforeEach(async(() => {
-  articleServiceSpy = jasmine.createSpyObj('Article Service Spy', ['fetch']);
-  fakeArticleSubject = new ReplaySubject<Article[]>();
+    articleServiceSpy = jasmine.createSpyObj('Article Service Spy', [ 'fetch' ]);
+    fakeArticleSubject = new ReplaySubject<Article[]>();
 
-  articleServiceSpy.articles$ = fakeArticleSubject.asObservable();
+    articleServiceSpy.articles$ = fakeArticleSubject.asObservable();
 
     TestBed.configureTestingModule({
       declarations: [ ArticleListComponent ],
       providers: [
         { provide: ArticleService, useValue: articleServiceSpy }
-        ]
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -40,12 +40,21 @@ describe('ArticleListComponent', () => {
     expect(articleServiceSpy.fetch).toHaveBeenCalled();
   });
 
-  it('should display article headlines', () => {
-    const articles: Article[] = [{ headline: 'Headline', url: 'www.article.com', content: 'Content of article'}];
+  describe('Displaying articles', () => {
+    beforeEach(() => {
+      const articles: Article[] = [
+        { headline: 'Headline', url: 'www.article.com', content: 'Content of article', thumbnail: 'image' }
+      ];
+      fakeArticleSubject.next(articles);
+      fixture.detectChanges();
+    });
 
-    fakeArticleSubject.next(articles);
-    fixture.detectChanges();
+    it('should display article headlines', () => {
+      expect(fixture.nativeElement.querySelector('.headline').textContent.trim()).toEqual('Headline');
+    });
 
-    expect(fixture.nativeElement.querySelector('.headline').textContent.trim()).toEqual('Headline');
+    it('should display article images', () => {
+      expect(fixture.nativeElement.querySelector('.thumbnail').getAttribute('src')).toEqual(('image'));
+    });
   });
 });

@@ -16,4 +16,8 @@ export class MainPage {
   getHeadlines() {
     return element(by.css('.headline'));
   }
+
+  getImages() {
+    return element(by.css('.thumbnail'));
+  }
 }

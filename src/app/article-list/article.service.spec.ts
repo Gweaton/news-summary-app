@@ -14,7 +14,8 @@ describe('ArticleService', () => {
     webUrl: 'www.articleone.com',
     fields: {
       headline: 'Article 1',
-      body: 'Article content'
+      body: 'Article content',
+      thumbnail: 'thumbnail',
     },
   },
     {
@@ -22,7 +23,8 @@ describe('ArticleService', () => {
       webUrl: 'www.articletwo.com',
       fields: {
         headline: 'Article 2',
-        body: ''
+        body: '',
+        thumbnail: 'thumbnail 2'
       }
     }
   ];
@@ -55,6 +57,7 @@ describe('ArticleService', () => {
       expect(firstArticle.headline).toEqual('Article 1');
       expect(firstArticle.content).toEqual('Article content');
       expect(firstArticle.url).toEqual('www.articleone.com');
+      expect(firstArticle.thumbnail).toEqual('thumbnail');
     });
 
     const req = httpMock.expectOne(service.articlesToday);

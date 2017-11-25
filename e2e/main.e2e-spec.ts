@@ -10,4 +10,8 @@ describe('Main homepage', () => {
   it('should display each article\'s headline', () => {
     expect(homepage.getHeadlines().isPresent()).toBe(true, 'Headlines should be displayed');
   });
+
+  it('should display each article\'s image', () => {
+    expect(homepage.getImages().isPresent()).toBe(true, 'Images should be displayed');
+  });
 });

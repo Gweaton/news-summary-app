@@ -1,9 +1,28 @@
-ul {
-  list-style-type: none;
+.article-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.article-list-item {
+  display: flex;
+  justify-content: center;
+  padding: 0.5em;
+  width: 100%;
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
 }
 
 .headline {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 }
 
+.thumbnail {
+  border-radius: 5px;
+  width: 100%;
+}
