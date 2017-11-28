@@ -1,5 +1,5 @@
 <ul class="article-list">
-  <li class="article-list-item" *ngFor="let article of articles$ | async">
+  <li class="article-list-item" *ngFor="let article of articles">
     <div class="article">
       <h3 class="headline">{{ article.headline }}</h3>
       <img [src]="article.thumbnail"

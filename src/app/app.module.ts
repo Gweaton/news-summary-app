@@ -5,8 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ArticleListComponent } from './article-list/article-list.component';
-import { ArticleService } from './article-list/article.service';
+import { ArticleListComponent } from './main/article-list/article-list.component';
+import { ArticleService } from './main/article.service';
 import { MainComponent } from './main/main.component';
 
 
