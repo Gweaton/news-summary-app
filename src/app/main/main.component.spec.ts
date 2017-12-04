@@ -36,7 +36,6 @@ describe('MainComponent', () => {
   });
 
   it('should call the ArticleService to fetch article data', () => {
-    component.ngOnInit();
     expect(articleServiceSpy.fetch).toHaveBeenCalled();
   });
 

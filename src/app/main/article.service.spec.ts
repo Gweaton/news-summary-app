@@ -10,23 +10,24 @@ describe('ArticleService', () => {
   let httpMock: HttpTestingController;
 
   const mockArticles: RawArticle[] = [ {
+    id: 'article1',
     webTitle: 'Article 1',
     webUrl: 'www.articleone.com',
     fields: {
       headline: 'Article 1',
-      body: 'Article content',
+      bodyText: 'Article content',
       thumbnail: 'thumbnail',
     },
-  },
-    {
-      webTitle: 'Article 2',
-      webUrl: 'www.articletwo.com',
-      fields: {
-        headline: 'Article 2',
-        body: '',
-        thumbnail: 'thumbnail 2'
-      }
+  }, {
+    id: 'article2',
+    webTitle: 'Article 2',
+    webUrl: 'www.articletwo.com',
+    fields: {
+      headline: 'Article 2',
+      bodyText: '',
+      thumbnail: 'thumbnail 2'
     }
+  }
   ];
 
   const mockResponse = {
@@ -63,6 +64,19 @@ describe('ArticleService', () => {
     const req = httpMock.expectOne(service.articlesToday);
     expect(req.request.method).toBe('GET');
 
+    req.flush(mockResponse);
+  });
+
+  it('should be able to find a specfic article based on URL id params', () => {
+    service.getArticle(mockArticles[0].id);
+    service.foundArticle$.subscribe(article => {
+      expect(article.headline).toEqual('Article 1');
+      expect(article.content).toEqual('Article content');
+      expect(article.url).toEqual('www.articleone.com');
+      expect(article.thumbnail).toEqual('thumbnail');
+    });
+
+    const req = httpMock.expectOne(service.articlesToday);
     req.flush(mockResponse);
   });
 

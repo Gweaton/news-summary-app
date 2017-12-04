@@ -1,4 +1,4 @@
-import { MainPage } from './app.po';
+import { MainPage } from './main.po';
 
 describe('App', () => {
   let page: MainPage;

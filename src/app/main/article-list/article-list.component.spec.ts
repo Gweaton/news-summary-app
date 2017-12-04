@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { ArticleListComponent } from './article-list.component';
 import { Article } from '../../../lib/models/article';
@@ -9,7 +10,8 @@ describe('ArticleListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArticleListComponent ]
+      declarations: [ ArticleListComponent ],
+      imports: [ RouterTestingModule ]
     })
       .compileComponents();
   }));
@@ -22,9 +24,13 @@ describe('ArticleListComponent', () => {
 
   describe('Displaying articles', () => {
     beforeEach(() => {
-      component.articles = [
-        { headline: 'Headline', url: 'www.article.com', content: 'Content of article', thumbnail: 'image' } as Article
-      ];
+      component.articles = [ {
+          id: 'articleId',
+          headline: 'Headline',
+          url: 'www.article.com',
+          content: 'Content of article',
+          thumbnail: 'image'
+      } as Article ];
       fixture.detectChanges();
     });
 
@@ -35,5 +41,12 @@ describe('ArticleListComponent', () => {
     it('should display article images', () => {
       expect(fixture.nativeElement.querySelector('.thumbnail').getAttribute('src')).toEqual(('image'));
     });
+
+    describe('Links to summaries', () => {
+      it('should create a link to each article with its id', () => {
+        expect(fixture.nativeElement.querySelector('a').getAttribute('href')).toEqual('/summary/articleId');
+      });
+    });
   });
+
 });

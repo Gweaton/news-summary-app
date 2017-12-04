@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 import { Article, deserialiseArticles, RawArticle } from '../../lib/models/article';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ArticleService {
@@ -17,11 +18,23 @@ export class ArticleService {
   private articleSubject = new ReplaySubject<Article[]>();
   articles$ = this.articleSubject.asObservable();
 
+  private foundArticleSubject = new ReplaySubject<Article>();
+  foundArticle$ = this.foundArticleSubject.asObservable();
+
   constructor(private http: HttpClient) { }
 
   fetch() {
     return this.http.get(this.articlesToday)
-      .map((resp: RawArticle[]) => deserialiseArticles(resp))
+      .map((resp: RawArticle[]) => {
+        return deserialiseArticles(resp);
+      })
       .subscribe((articles: Article[]) => this.articleSubject.next(articles));
+  }
+
+  getArticle(id: String) {
+    this.fetch();
+    this.articles$.subscribe(articles => {
+      this.foundArticleSubject.next(articles.find(article => article.id === id));
+    });
   }
 }

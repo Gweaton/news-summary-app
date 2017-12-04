@@ -1,7 +1,10 @@
 <ul class="article-list">
   <li class="article-list-item" *ngFor="let article of articles">
     <div class="article">
-      <h3 class="headline">{{ article.headline }}</h3>
+      <a class="link"
+        [routerLink]="['/summary', article.id]">
+          <h3 class="headline">{{ article.headline }}</h3>
+      </a>
       <img [src]="article.thumbnail"
            class="thumbnail">
     </div>
