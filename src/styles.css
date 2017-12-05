@@ -4,7 +4,9 @@
 }
 
 body {
-  background-color: steelblue;
+  background: url("assets/background.jpg") no-repeat fixed center;
+  background-size: cover;
+
   color: whitesmoke;
   font: 20px Helvetica, Verdana, sans-serif;
   margin: 0 auto;
