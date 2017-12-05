@@ -41,12 +41,5 @@ describe('ArticleListComponent', () => {
     it('should display article images', () => {
       expect(fixture.nativeElement.querySelector('.thumbnail').getAttribute('src')).toEqual(('image'));
     });
-
-    describe('Links to summaries', () => {
-      it('should create a link to each article with its id', () => {
-        expect(fixture.nativeElement.querySelector('a').getAttribute('href')).toEqual('/summary/articleId');
-      });
-    });
   });
-
 });

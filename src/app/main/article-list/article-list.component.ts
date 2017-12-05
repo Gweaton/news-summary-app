@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+
 import { Article } from '../../../lib/models/article';
 
 @Component({

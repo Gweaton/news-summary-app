@@ -66,18 +66,4 @@ describe('ArticleService', () => {
 
     req.flush(mockResponse);
   });
-
-  it('should be able to find a specfic article based on URL id params', () => {
-    service.getArticle(mockArticles[0].id);
-    service.foundArticle$.subscribe(article => {
-      expect(article.headline).toEqual('Article 1');
-      expect(article.content).toEqual('Article content');
-      expect(article.url).toEqual('www.articleone.com');
-      expect(article.thumbnail).toEqual('thumbnail');
-    });
-
-    const req = httpMock.expectOne(service.articlesToday);
-    req.flush(mockResponse);
-  });
-
 });

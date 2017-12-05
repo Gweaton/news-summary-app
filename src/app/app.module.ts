@@ -8,15 +8,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { ArticleListComponent } from './main/article-list/article-list.component';
 import { ArticleService } from './main/article.service';
 import { MainComponent } from './main/main.component';
-import { ArticleSummaryComponent } from './main/article-summary/article-summary.component';
-
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     ArticleListComponent,
-    ArticleSummaryComponent
   ],
   imports: [
     AppRoutingModule,
