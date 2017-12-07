@@ -21,13 +21,7 @@ export class MainPage {
     return element(by.css('.thumbnail'));
   }
 
-  clickFirstHeadline() {
-    return element.all(by.css('.link')).first().click();
-  }
-
-  hasBeenRedirectedToArticleSummary() {
-    return browser.getCurrentUrl().then(url => {
-      return url.includes('summary/');
-    });
+  getSummary() {
+    return element(by.css('.summary-modal'));
   }
 }

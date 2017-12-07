@@ -30,7 +30,7 @@ describe('ArticleService', () => {
   }
   ];
 
-  const mockResponse = {
+  const mockGuardianApiResponse = {
     response: {
       results: mockArticles
     }
@@ -49,7 +49,7 @@ describe('ArticleService', () => {
     httpMock.verify();
   });
 
-  it('should make a request to the Makers Academy Guardian/Aylien API and return articles', () => {
+  it('should make a request to the Makers Academy Guardian API and return articles', () => {
     service.fetch();
     service.articles$.subscribe((articles: Article[]) => {
       expect(articles.length).toEqual(2);
@@ -64,6 +64,6 @@ describe('ArticleService', () => {
     const req = httpMock.expectOne(service.articlesToday);
     expect(req.request.method).toBe('GET');
 
-    req.flush(mockResponse);
+    req.flush(mockGuardianApiResponse);
   });
 });

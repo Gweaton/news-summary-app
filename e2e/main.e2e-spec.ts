@@ -18,4 +18,8 @@ describe('Main homepage', () => {
   it('should display each article\'s image', () => {
     expect(homepage.getImages().isPresent()).toBe(true, 'Images should be displayed');
   });
+
+  it('should display each article\'s summary', () => {
+    expect(homepage.getSummary().isPresent()).toBe(true, 'Summary is not present');
+  });
 });

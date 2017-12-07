@@ -1,12 +1,15 @@
 <ul class="article-list">
   <li class="article-list-item" *ngFor="let article of articles">
     <div class="article">
-      <a class="link"
-        [routerLink]="['/summary', article.id]">
+      <a class="link">
           <h3 class="headline">{{ article.headline }}</h3>
       </a>
       <img [src]="article.thumbnail"
            class="thumbnail">
     </div>
+
+    <app-article-summary-modal [article]="article"
+                               class="summary-modal">
+    </app-article-summary-modal>
   </li>
 </ul>
