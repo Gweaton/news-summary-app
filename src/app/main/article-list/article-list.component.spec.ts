@@ -3,14 +3,14 @@ import { By } from '@angular/platform-browser';
 
 import { ArticleListComponent } from './article-list.component';
 import { Article } from '../../../lib/models/article';
-import { ArticleSummaryModalComponent } from './article-summary-modal/article-summary-modal.component';
-import { ArticleSummaryService } from './article-summary-modal/article-summary.service';
+import { ArticleSummarySectionComponent } from './article-summary-section/article-summary-section.component';
+import { ArticleSummaryService } from './article-summary-section/article-summary.service';
 
 describe('ArticleListComponent', () => {
   let component: ArticleListComponent;
   let fixture: ComponentFixture<ArticleListComponent>;
 
-  let modalComponent: ArticleSummaryModalComponent;
+  let summarySectionComponent: ArticleSummarySectionComponent;
 
   let articleSummaryServiceSpy: ArticleSummaryService;
   articleSummaryServiceSpy = jasmine.createSpyObj('Article Summary Service', ['getSummaryOfArticle']);
@@ -19,10 +19,10 @@ describe('ArticleListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         ArticleListComponent,
-        ArticleSummaryModalComponent
+        ArticleSummarySectionComponent
       ],
     });
-    TestBed.overrideComponent(ArticleSummaryModalComponent, {
+    TestBed.overrideComponent(ArticleSummarySectionComponent, {
       set: {
         providers: [{ provide: ArticleSummaryService, useValue: articleSummaryServiceSpy }]
       }
@@ -57,11 +57,16 @@ describe('ArticleListComponent', () => {
     });
 
     describe('Article summary', () => {
-      it('should pass each article down to the article modal ', () => {
-        modalComponent = fixture.debugElement.query(By.directive(ArticleSummaryModalComponent)).componentInstance;
+      it('should pass each article down to the article summary section ', () => {
+        summarySectionComponent = fixture.debugElement.query(By.directive(ArticleSummarySectionComponent)).componentInstance;
         fixture.detectChanges();
 
-        expect(modalComponent.article).toEqual(component.articles[0]);
+        expect(summarySectionComponent.article).toEqual(component.articles[0]);
+      });
+
+      it('should display the article summary', () => {
+        fixture.detectChanges();
+        expect(fixture.nativeElement.querySelector('.summary-section')).not.toBe(null);
       });
     });
   });

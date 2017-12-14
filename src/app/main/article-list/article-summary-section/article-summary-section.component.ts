@@ -6,12 +6,12 @@ import { Article } from '../../../../lib/models/article';
 import { ArticleSummaryService } from './article-summary.service';
 
 @Component({
-  selector: 'app-article-summary-modal',
-  templateUrl: './article-summary-modal.component.html',
-  styleUrls: ['./article-summary-modal.component.css'],
+  selector: 'app-article-summary-section',
+  templateUrl: './article-summary-section.component.html',
+  styleUrls: ['./article-summary-section.component.css'],
   providers: [ ArticleSummaryService ]
 })
-export class ArticleSummaryModalComponent implements OnInit {
+export class ArticleSummarySectionComponent implements OnInit {
   @Input() article: Article;
 
   constructor(private summaryService: ArticleSummaryService) { }

@@ -19,7 +19,10 @@ describe('Main homepage', () => {
     expect(homepage.getImages().isPresent()).toBe(true, 'Images should be displayed');
   });
 
-  it('should display each article\'s summary', () => {
-    expect(homepage.getSummary().isPresent()).toBe(true, 'Summary is not present');
+  describe('Article summaries', () => {
+    it('should display each article\'s summary', () => {
+      expect(homepage.getSummary().isPresent()).toBe(true, 'Summary section is not displayed');
+    });
   });
+
 });

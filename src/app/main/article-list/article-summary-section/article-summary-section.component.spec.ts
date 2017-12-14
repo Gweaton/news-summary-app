@@ -4,13 +4,13 @@ import 'rxjs/add/observable/of';
 import { Subject } from 'rxjs/Subject';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 
-import { ArticleSummaryModalComponent } from './article-summary-modal.component';
+import { ArticleSummarySectionComponent } from './article-summary-section.component';
 import { Article } from '../../../../lib/models/article';
 import { ArticleSummaryService } from './article-summary.service';
 
-describe('ArticleSummaryModalComponent', () => {
-  let component: ArticleSummaryModalComponent;
-  let fixture: ComponentFixture<ArticleSummaryModalComponent>;
+describe('ArticleSummarySectionComponent', () => {
+  let component: ArticleSummarySectionComponent;
+  let fixture: ComponentFixture<ArticleSummarySectionComponent>;
 
   let summaryServiceSpy: ArticleSummaryService;
   summaryServiceSpy = jasmine.createSpyObj('Article Service Spy', ['getSummaryOfArticle']);
@@ -22,11 +22,10 @@ describe('ArticleSummaryModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArticleSummaryModalComponent ],
-      // providers: [ { provide: ArticleSummaryService, useValue: summaryServiceSpy } ],
+      declarations: [ ArticleSummarySectionComponent ],
     });
 
-    TestBed.overrideComponent(ArticleSummaryModalComponent, {
+    TestBed.overrideComponent(ArticleSummarySectionComponent, {
       set: {
         providers: [{ provide: ArticleSummaryService, useValue: summaryServiceSpy }]
       }
@@ -36,7 +35,7 @@ describe('ArticleSummaryModalComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ArticleSummaryModalComponent);
+    fixture = TestBed.createComponent(ArticleSummarySectionComponent);
     component = fixture.componentInstance;
 
     component.article = {
@@ -59,5 +58,4 @@ describe('ArticleSummaryModalComponent', () => {
       expect(fixture.nativeElement.querySelector('.summary').textContent).toContain(('Summary'));
     });
   });
-
 });

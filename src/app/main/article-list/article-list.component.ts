@@ -11,4 +11,8 @@ export class ArticleListComponent {
   @Input() articles: Article[];
 
   constructor() { }
+
+
+
+
 }

@@ -22,6 +22,6 @@ export class MainPage {
   }
 
   getSummary() {
-    return element(by.css('.summary-modal'));
+    return element(by.css('.summary-section'));
   }
 }

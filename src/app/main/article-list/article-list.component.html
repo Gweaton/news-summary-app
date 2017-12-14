@@ -1,15 +1,21 @@
 <ul class="article-list">
   <li class="article-list-item" *ngFor="let article of articles">
-    <div class="article">
-      <a class="link">
-          <h3 class="headline">{{ article.headline }}</h3>
-      </a>
-      <img [src]="article.thumbnail"
-           class="thumbnail">
-    </div>
+    <div class="flip-container">
+      <div class="article">
 
-    <app-article-summary-modal [article]="article"
-                               class="summary-modal">
-    </app-article-summary-modal>
+        <div class="front">
+          <h3 class="headline">{{ article.headline }}</h3>
+          <img [src]="article.thumbnail"
+               class="thumbnail">
+        </div>
+
+        <div class="back">
+          <app-article-summary-section [article]="article"
+                                     class="summary-section">
+          </app-article-summary-section>
+        </div>
+
+      </div>
+    </div>
   </li>
 </ul>
