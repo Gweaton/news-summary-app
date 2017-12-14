@@ -1,6 +1,10 @@
 # News Summary App
 
-An single page app that gets the day's articles from the Guardian and will (to-do!) summarise them using the Aylien text summary API.
+An single page app that gets the day's articles from the Guardian and summarises them using the Aylien text summary API.
+
+The app displays a grid of the top 10 articles from the Guardian at any given time. It may take a couple of seconds before each article is displayed as the app waits to receive data from the Guardian and Aylien APIs (I'm planning to add a loading message to make this more obvious).
+
+Hover over each headline/picture card to view a summary of that article's content.
 
 A practice project to solidify what I've learnt in Angular 5 over the past few months with particular focus on:
   - RxJS Observables
@@ -8,7 +12,7 @@ A practice project to solidify what I've learnt in Angular 5 over the past few m
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
 ## Running unit tests
 
@@ -29,11 +33,6 @@ This project is based on an old Makers Academy weekend challenge, which uses the
 As a busy politician
 I can see all of today's headlines in one place
 So I know what the big stories of the day are
-```
-```
-As a busy politician
-I can click a link to see the original news article
-So that I can get an in depth understanding of a very important story
 ```
 ```
 As a busy politician
